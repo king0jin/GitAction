@@ -13,16 +13,16 @@ RUN apt-get update \
 WORKDIR /usr/src/app
 
 # Copy requirements file and install dependencies
-COPY requirements.txt ./
+COPY ./requirements.txt .
 RUN pip install --upgrade pip \
   && pip install -r requirements.txt
 
 # Copy the rest of the application code
-COPY . .
-
+COPY .. /usr/src/app/
 
 # Expose the application port
 EXPOSE 80
 
 # Run Django development server
 CMD ["python", "manage.py", "runserver", "0.0.0.0:80"]
+
