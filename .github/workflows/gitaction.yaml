@@ -37,3 +37,10 @@ jobs:
           docker build -t $REPO .
           docker tag $REPO:latest $NAME/$REPO:$IMAGE_TAG
           docker push $NAME/$REPO:$IMAGE_TAG
+
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: arn:aws:iam::730335547094:role/userRole
+          role-session-name: userRole
+          aws-region: ap-northeast-2
