@@ -44,7 +44,7 @@ jobs:
         env:
           NAME: ${{secrets.DOCKERHUB_USERNAME}}
           REPO: publiccloud
-          IMAGE_TAG: ${{ github.sha }} #태그변경값부여
+          IMAGE_TAG: new #${{ github.sha }} #유니크한 태그 부여
         run: |
           docker build -t $REPO .
           docker tag $REPO:latest $NAME/$REPO:$IMAGE_TAG
@@ -65,7 +65,7 @@ jobs:
         id: build-image
         env:
           ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
-          IMAGE_TAG: ${{ github.sha }}
+          IMAGE_TAG: new #${{ github.sha }}
         run: |
           docker build -t $ECR_REGISTRY/userproject:$IMAGE_TAG .
           docker push $ECR_REGISTRY/userproject:$IMAGE_TAG

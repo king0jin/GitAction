@@ -18,7 +18,8 @@ RUN pip install --upgrade pip \
   && pip install -r requirements.txt
 
 # Copy the rest of the application code
-COPY ../ .
+COPY . .
+
 
 # Expose the application port
 EXPOSE 80
